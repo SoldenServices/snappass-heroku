@@ -1,29 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Heroku Snappass</title>
+    <title>Connor Group Snappass</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="{{ config.STATIC_URL }}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ config.STATIC_URL }}/fontawesome/css/font-awesome.min.css?v=4.7.0" rel="stylesheet">
-    <link href="{{ config.STATIC_URL }}/snappass/css/custom.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='fontawesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='snappass/css/custom.css') }}" rel="stylesheet">
+    <link href="{{  url_for('static', filename='connorgp/css/connorgp.css') }}" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-static-top">
+    <nav class="navbar navbar-static-top connor-header">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">Heroku Snappass</a>
+          <a class="" href="/">
+            <img src="{{ url_for('static', filename='connorgp/images/logo-color.png') }}"
+                 alt="Connor Group"
+                 class="img-responsive">
+          </a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li>Connor Group SnapPass</li>
+          </ul>
         </div>
       </div>
     </nav>
 
     {% block content %}{% endblock %}
-    <script src="{{ config.STATIC_URL }}/jquery/jquery-1.12.4.min.js"></script>
-    <script src="{{ config.STATIC_URL }}/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='jquery/jquery-1.12.4.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
     {% block js %}{% endblock %}
   </body>
   <br />
   <br />
-  <p style="text-align: center;"><a href="https://github.com/samteezy/snappass/">Heroku fork</a> of <a href="https://github.com/pinterest/snappass">the original</a> from the great folks at Pinterest.</p>
+  <p style="text-align: center;">
+    <a href="https://www.connorgp.com/privacy/">Privacy Policy</a>
+  </p>
+  <!--
+    <p style="text-align: center;">
+  <a href="https://github.com/samteezy/snappass/">Heroku fork</a> of <a href="https://github.com/pinterest/snappass">
+    the original</a> from the great folks at Pinterest.
+  </p> -->
 </html>
