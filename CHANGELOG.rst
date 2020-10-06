@@ -1,3 +1,11 @@
+Connor Group Changes (10-07-2020)
+----------------------------------
+* use python-environ to create settings from .env file or environment variables
+* use Flask_S3 for serving static files from S3 / CloudFront in production
+* use the flask-debugtoolbar in development
+* minor template changes for branding
+
+
 Version 1.5.0 (in development)
 ------------------------------
 * The ``URL_PREFIX`` environment variable can be used to add a prefix to URLs,
