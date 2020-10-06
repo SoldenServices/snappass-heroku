@@ -12,7 +12,6 @@ from redis.exceptions import ConnectionError
 from werkzeug.urls import url_quote_plus
 from werkzeug.urls import url_unquote_plus
 from flask_s3 import FlaskS3
-from flask_debugtoolbar import DebugToolbarExtension
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -65,6 +64,7 @@ app.secret_key = env("SECRET_KEY")
 app.config["STATIC_URL"] = env("STATIC_URL", default="static")
 
 if app.debug is True:
+    from flask_debugtoolbar import DebugToolbarExtension
     toolbar = DebugToolbarExtension(app)
 
 
