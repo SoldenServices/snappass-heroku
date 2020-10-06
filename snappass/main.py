@@ -19,7 +19,7 @@ env = environ.Env(
     DEBUG=(bool, False),
     USE_S3=(bool, False),
     NO_SSL=(bool, False),
-    MOCK_REDIT=(bool, False),
+    MOCK_REDIS=(bool, False),
     USE_CDN=(bool, False),
 )
 env.read_env()
