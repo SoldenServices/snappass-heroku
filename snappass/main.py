@@ -39,7 +39,7 @@ SNEAKY_USER_AGENTS_RE = re.compile("|".join(SNEAKY_USER_AGENTS))
 NO_SSL = env("NO_SSL")
 URL_PREFIX = env("URL_PREFIX", default=None)
 TOKEN_SEPARATOR = "~"
-
+SELF = "'self'"
 
 def start_app():
     flask_app = Flask(__name__)
@@ -55,8 +55,20 @@ def start_app():
         s3.init_app(flask_app)
 
     flask_app.debug = debug
+    content_security_policy = {
+        'default-src': SELF,
+        'img-src': '*',
+        'script-src': [
+            SELF,
+            env("CDN_DOMAIN"),
+        ],
+        'style-src': [
+            SELF,
+            env("CDN_DOMAIN"),
+        ],
+    }
     if env("ENVIRONMENT") != "development":
-        Talisman(flask_app)
+        Talisman(flask_app, content_security_policy=content_security_policy)
     return flask_app
 
 
