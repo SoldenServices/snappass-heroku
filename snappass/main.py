@@ -56,16 +56,10 @@ def start_app():
 
     flask_app.debug = debug
     content_security_policy = {
-        'default-src': SELF,
-        'img-src': '*',
-        'script-src': [
+        'default-src': [
             SELF,
-            env("CDN_DOMAIN"),
-        ],
-        'style-src': [
-            SELF,
-            env("CDN_DOMAIN"),
-        ],
+            env("CDN_DOMAIN")
+        ]
     }
     if env("ENVIRONMENT") != "development":
         Talisman(flask_app, content_security_policy=content_security_policy)
