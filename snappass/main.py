@@ -12,6 +12,7 @@ from redis.exceptions import ConnectionError
 from werkzeug.urls import url_quote_plus
 from werkzeug.urls import url_unquote_plus
 from flask_s3 import FlaskS3
+from flask_talisman import Talisman
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -54,6 +55,8 @@ def start_app():
         s3.init_app(flask_app)
 
     flask_app.debug = debug
+    if env("ENVIRONMENT") != "development":
+        Talisman(flask_app)
     return flask_app
 
 

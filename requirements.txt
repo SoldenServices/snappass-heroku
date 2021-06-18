@@ -5,3 +5,4 @@ redis==3.5.3
 cryptography==3.4.7
 Flask_S3==0.3.3
 python-environ==0.4.54
+flask-talisman==0.8.1
