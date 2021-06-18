@@ -2,17 +2,14 @@ from flask_s3 import FlaskS3, create_all
 from flask import Flask
 import environ
 
-env = environ.Env(
-)
+env = environ.Env()
 env.read_env()
 
 filepath_headers = {
-    r'.css$': {
-        'Content-Type': 'text/css; charset=utf-8',
+    r".css$": {
+        "Content-Type": "text/css; charset=utf-8",
     },
-    r'.js$': {
-        "Content-Type": 'application/javascript; charset=utf-8'
-    }
+    r".js$": {"Content-Type": "application/javascript; charset=utf-8"},
 }
 
 general_headers = {
@@ -27,4 +24,3 @@ app.config["FLASKS3_HEADERS"] = general_headers
 s3 = FlaskS3(app)
 
 create_all(app)
-

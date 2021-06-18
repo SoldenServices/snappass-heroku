@@ -65,12 +65,14 @@ app.config["STATIC_URL"] = env("STATIC_URL", default="static")
 
 if app.debug is True:
     from flask_debugtoolbar import DebugToolbarExtension
+
     toolbar = DebugToolbarExtension(app)
 
 
 # Initialize Redis
 if env("MOCK_REDIS"):
     from fakeredis import FakeStrictRedis
+
     redis_client = FakeStrictRedis()
 elif env("REDIS_URL"):
     redis_client = redis.StrictRedis.from_url(env("REDIS_URL"))
